@@ -1,4 +1,7 @@
 {
-  "name": "VR-app",
-  "slug": "VR-app"
+  "expo": {
+    "name": "VR-app",
+    "slug": "VR-app",
+    "newArchEnabled": true
+  }
 }
