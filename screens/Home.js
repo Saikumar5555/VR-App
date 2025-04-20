@@ -25,6 +25,13 @@
 
 // export default Home;
 
+
+
+
+
+
+
+
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -69,7 +76,11 @@ const Home = () => {
       <Stack.Screen name="VRJourney" component={VRJourneyScreen} options={{ title: 'VR Journey', headerShown: false }} />
 
       {/* Use Case 3 - VR Exploration */}
-      <Stack.Screen name="VRExploration" component={VRExplorationScreen} options={{ title: 'Explore', headerShown: false }} />
+      <Stack.Screen 
+        name="VRExploration" 
+        component={VRExplorationScreen} 
+        options={{ title: 'Explore', headerShown: false }}
+      />
 
       {/* Use Case 4 - Marketplace */}
       <Stack.Screen name="Marketplace" component={MarketplaceScreen} options={{ title: 'Local Marketplace' }} />
