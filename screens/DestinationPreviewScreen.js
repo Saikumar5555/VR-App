@@ -4,13 +4,33 @@ import { View, Text, Image, TouchableOpacity, ScrollView, StatusBar } from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
+// Map of destination images
+const destinationImages = {
+  'Paris, France': require('../assets/images/paris.jpg'),
+  'Tokyo, Japan': require('../assets/images/tokyo.jpg'),
+  'Venice, Italy': require('../assets/images/venice.jpg'),
+  'Bali, Indonesia': require('../assets/images/bali.jpg'),
+  'New York City, USA': require('../assets/images/newyork.jpg'),
+  'Grand Canyon, USA': require('../assets/images/grandcanyon.jpg'),
+  'Cairo, Egypt': require('../assets/images/cairo.jpg'),
+  'Sydney, Australia': require('../assets/images/sydney.jpg'),
+  // Shorter names for when destinations are referred to briefly
+  'Paris': require('../assets/images/paris.jpg'),
+  'Tokyo': require('../assets/images/tokyo.jpg'),
+  'Venice': require('../assets/images/venice.jpg'),
+  'Bali': require('../assets/images/bali.jpg'),
+  'New York': require('../assets/images/newyork.jpg')
+};
+
+// Default image for destinations without a specific image
+const defaultImage = require('../assets/images/paris.jpg');
+
 // Sample destination details (in a real app, this would come from an API)
 const DESTINATION_DETAILS = {
   'Paris, France': {
     name: 'Paris, France',
     tagline: 'City of Lights',
     description: 'Discover the romance and elegance of Paris, with its iconic Eiffel Tower, historic Notre Dame Cathedral, world-class museums like the Louvre, and charming café culture. Experience the magic of strolling along the Seine River and exploring the artistic districts of Montmartre.',
-    image: 'https://source.unsplash.com/featured/?paris,eiffel',
     rating: 4.8,
     highlights: [
       'Eiffel Tower',
@@ -30,7 +50,6 @@ const DESTINATION_DETAILS = {
     name: 'Tokyo, Japan',
     tagline: 'Where Tradition Meets Future',
     description: 'Explore the fascinating contrasts of Tokyo, from ultramodern skyscrapers to historic temples. Experience the bustling Shibuya Crossing, tranquil gardens, diverse cuisine, and vibrant pop culture. Tokyo offers an unforgettable blend of ancient traditions and cutting-edge innovation.',
-    image: 'https://source.unsplash.com/featured/?tokyo,japan',
     rating: 4.7,
     highlights: [
       'Shibuya Crossing',
@@ -74,8 +93,15 @@ const DestinationPreviewScreen = ({ route, navigation }) => {
   
   // Handle both string-based and object-based navigation params
   const destName = typeof destination === 'string' ? destination : destination.name;
-  const destData = DESTINATION_DETAILS[destName] || 
-                  { ...DEFAULT_DESTINATION, name: destName, image: typeof destination === 'object' ? destination.image : `https://source.unsplash.com/featured/?${destName},landmark` };
+  
+  // Create destination data with local image reference
+  const destData = {
+    ...(DESTINATION_DETAILS[destName] || { ...DEFAULT_DESTINATION, name: destName }),
+    // Use the image from the map, or from the destination object if it's already a local reference
+    image: typeof destination === 'object' && destination.image ? 
+      destination.image : 
+      destinationImages[destName] || defaultImage
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -84,8 +110,9 @@ const DestinationPreviewScreen = ({ route, navigation }) => {
       {/* Hero Image */}
       <View className="w-full h-72 relative">
         <Image
-          source={{ uri: destData.image }}
+          source={destData.image}
           className="w-full h-full"
+          resizeMode="cover"
           onLoad={() => setImageLoaded(true)}
         />
         <View className="absolute inset-0 bg-black opacity-30" />

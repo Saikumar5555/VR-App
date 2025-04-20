@@ -4,6 +4,15 @@ import { View, Text, Image, TouchableOpacity, ScrollView, StatusBar } from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 
+// Define city images in an object for easy reference
+const cityImages = {
+  Paris: require('../assets/images/paris.jpg'),
+  Tokyo: require('../assets/images/tokyo.jpg'),
+  'New York': require('../assets/images/newyork.jpg'),
+  Venice: require('../assets/images/venice.jpg'),
+  Bali: require('../assets/images/bali.jpg')
+};
+
 const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -15,7 +24,7 @@ const HomeScreen = ({ navigation }) => {
           className="w-full h-64 justify-center items-center rounded-b-3xl px-6"
         >
           <Image
-            source={require('../assets/images/sclarion.png')}
+            source={require('../assets/images/VRlogo.png')}
             className="w-24 h-24 mb-4"
             resizeMode="contain"
           />
@@ -64,8 +73,9 @@ const HomeScreen = ({ navigation }) => {
               >
                 <View className="bg-gray-200 w-40 h-28 rounded-lg overflow-hidden shadow-sm">
                   <Image 
-                    source={{ uri: `https://source.unsplash.com/featured/?${city},landmark` }}
+                    source={cityImages[city]}
                     className="w-full h-full"
+                    resizeMode="cover"
                   />
                 </View>
                 <Text className="text-gray-800 font-medium mt-2">{city}</Text>

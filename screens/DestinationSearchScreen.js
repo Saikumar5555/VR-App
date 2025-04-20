@@ -4,62 +4,62 @@ import { View, Text, TextInput, FlatList, Image, TouchableOpacity, StatusBar } f
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
-// Sample destination data
+// Sample destination data with local image references
 const DESTINATIONS = [
   {
     id: '1',
     name: 'Paris, France',
     description: 'City of Lights with iconic Eiffel Tower and rich history',
-    image: 'https://source.unsplash.com/featured/?paris,eiffel',
+    image: require('../assets/images/paris.jpg'),
     category: 'Cultural'
   },
   {
     id: '2',
     name: 'Tokyo, Japan',
     description: 'Modern metropolis with traditional temples and gardens',
-    image: 'https://source.unsplash.com/featured/?tokyo,japan',
+    image: require('../assets/images/tokyo.jpg'),
     category: 'Urban'
   },
   {
     id: '3',
     name: 'Venice, Italy',
     description: 'Romantic canal city with stunning architecture',
-    image: 'https://source.unsplash.com/featured/?venice,canal',
+    image: require('../assets/images/venice.jpg'),
     category: 'Cultural'
   },
   {
     id: '4',
     name: 'Bali, Indonesia',
     description: 'Tropical paradise with beaches and spiritual temples',
-    image: 'https://source.unsplash.com/featured/?bali,beach',
+    image: require('../assets/images/bali.jpg'),
     category: 'Beach'
   },
   {
     id: '5',
     name: 'New York City, USA',
     description: 'The Big Apple with iconic skyline and Central Park',
-    image: 'https://source.unsplash.com/featured/?newyork,skyline',
+    image: require('../assets/images/newyork.jpg'),
     category: 'Urban'
   },
   {
     id: '6',
     name: 'Grand Canyon, USA',
     description: 'Spectacular natural wonder with breathtaking views',
-    image: 'https://source.unsplash.com/featured/?grandcanyon',
+    image: require('../assets/images/grandcanyon.jpg'),
     category: 'Nature'
   },
   {
     id: '7',
     name: 'Cairo, Egypt',
     description: 'Ancient civilization with pyramids and rich history',
-    image: 'https://source.unsplash.com/featured/?cairo,pyramid',
+    image: require('../assets/images/cairo.jpg'),
     category: 'Historical'
   },
   {
     id: '8',
     name: 'Sydney, Australia',
     description: 'Harbor city with iconic Opera House and beautiful beaches',
-    image: 'https://source.unsplash.com/featured/?sydney,opera',
+    image: require('../assets/images/sydney.jpg'),
     category: 'Urban'
   }
 ];
@@ -85,8 +85,9 @@ const DestinationSearchScreen = ({ navigation }) => {
       onPress={() => navigation.navigate('DestinationPreview', { destination: item })}
     >
       <Image 
-        source={{ uri: item.image }}
+        source={item.image}
         className="w-full h-40"
+        resizeMode="cover"
       />
       <View className="p-4">
         <View className="flex-row justify-between items-center mb-2">
