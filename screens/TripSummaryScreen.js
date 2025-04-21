@@ -97,10 +97,10 @@ const TripSummaryScreen = ({ route, navigation }) => {
             <Text className="text-gray-800">{preferences.language}</Text>
           </View>
           
-          <View className="mb-3">
+          {/* <View className="mb-3">
             <Text className="text-gray-600 mb-1">Narrator Voice</Text>
             <Text className="text-gray-800">{preferences.narratorVoice}</Text>
-          </View>
+          </View> */}
           
           <View className="mb-3">
             <Text className="text-gray-600 mb-1">Tour Pace</Text>
@@ -211,7 +211,7 @@ const TripSummaryScreen = ({ route, navigation }) => {
           className="bg-indigo-600 py-4 rounded-xl"
           onPress={confirmBooking}
         >
-          <Text className="text-white font-bold text-center text-lg">Confirm & Start Journey</Text>
+          <Text className="text-white font-bold text-center text-lg">Next</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

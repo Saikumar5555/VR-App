@@ -6,7 +6,7 @@
 
 // // Map of destination images
 // const destinationImages = {
-//   'Paris, France': require('../assets/images/paris.jpg'),
+//   'Agra, U.P': require('../assets/images/Agra.jpg'),
 //   'Tokyo, Japan': require('../assets/images/tokyo.jpg'),
 //   'Venice, Italy': require('../assets/images/venice.jpg'),
 //   'Bali, Indonesia': require('../assets/images/bali.jpg'),
@@ -15,7 +15,7 @@
 //   'Cairo, Egypt': require('../assets/images/cairo.jpg'),
 //   'Sydney, Australia': require('../assets/images/sydney.jpg'),
 //   // Shorter names for when destinations are referred to briefly
-//   'Paris': require('../assets/images/paris.jpg'),
+//   'Agra': require('../assets/images/Agra.jpg'),
 //   'Tokyo': require('../assets/images/tokyo.jpg'),
 //   'Venice': require('../assets/images/venice.jpg'),
 //   'Bali': require('../assets/images/bali.jpg'),
@@ -23,7 +23,7 @@
 // };
 
 // // Default image for destinations without a specific image
-// const defaultImage = require('../assets/images/paris.jpg');
+// const defaultImage = require('../assets/images/Agra.jpg');
 
 // // Reusable SettingSwitch component
 // const SettingSwitch = ({ icon, label, value, onValueChange }) => (
@@ -65,7 +65,7 @@
 //   const [selectedViewMode, setSelectedViewMode] = useState(viewModes[transportMode][0]);
 
 //   // Language options
-//   const languages = ['English', 'Spanish', 'French', 'Japanese', 'German', 'Italian', 'Chinese'];
+//   const languages = ['English', 'Spanish', 'French', 'Japanese', 'German', 'Italian', 'Hindi'];
 
 //   // Format destination name for display
 //   const destName = typeof destination === 'string' ? destination : destination.name;
@@ -271,7 +271,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
 const destinationImages = {
-  'Paris, France': require('../assets/images/paris.jpg'),
+  'Agra, U.P': require('../assets/images/Agra.jpg'),
   'Tokyo, Japan': require('../assets/images/tokyo.jpg'),
   'Venice, Italy': require('../assets/images/venice.jpg'),
   'Bali, Indonesia': require('../assets/images/bali.jpg'),
@@ -279,14 +279,14 @@ const destinationImages = {
   'Grand Canyon, USA': require('../assets/images/grandcanyon.jpg'),
   'Cairo, Egypt': require('../assets/images/cairo.jpg'),
   'Sydney, Australia': require('../assets/images/sydney.jpg'),
-  'Paris': require('../assets/images/paris.jpg'),
+  'Agra': require('../assets/images/Agra.jpg'),
   'Tokyo': require('../assets/images/tokyo.jpg'),
   'Venice': require('../assets/images/venice.jpg'),
   'Bali': require('../assets/images/bali.jpg'),
   'New York': require('../assets/images/newyork.jpg')
 };
 
-const defaultImage = require('../assets/images/paris.jpg');
+const defaultImage = require('../assets/images/Agra.jpg');
 
 const SettingSwitch = ({ icon, label, value, onValueChange }) => (
   <View className="flex-row justify-between items-center py-3 border-b border-gray-100">
@@ -323,7 +323,7 @@ const JourneySetupScreen = ({ route, navigation }) => {
   };
 
   const [selectedViewMode, setSelectedViewMode] = useState(viewModes[transportMode][0]);
-  const languages = ['English', 'Spanish', 'French', 'Japanese', 'German', 'Italian', 'Chinese'];
+  const languages = ['English', 'Spanish', 'French', 'Japanese', 'German', 'Italian', 'Hindi'];
   const destName = typeof destination === 'string' ? destination : destination.name;
 
   const getDestinationImage = (name) => {

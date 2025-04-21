@@ -50,6 +50,7 @@ import ProductDetailsScreen from './ProductDetailsScreen';
 import CartScreen from './CartScreen';
 import PaymentScreen from './PaymentScreen';
 import OrderConfirmationScreen from './OrderConfirmationScreen';
+import AppNavigator from './AppNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -88,6 +89,8 @@ const Home = () => {
       <Stack.Screen name="Cart" component={CartScreen} options={{ title: 'Shopping Cart' }} />
       <Stack.Screen name="Payment" component={PaymentScreen} options={{ title: 'Payment' }} />
       <Stack.Screen name="OrderConfirmation" component={OrderConfirmationScreen} options={{ title: 'Order Confirmation' }} />
+      {/* Add AppNavigator as a screen */}
+      <Stack.Screen name="AppNavigator" component={AppNavigator} />
     </Stack.Navigator>
   );
 };

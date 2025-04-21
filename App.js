@@ -114,15 +114,56 @@
 // }
 
 
+// import React from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import AppNavigator from './screens/AppNavigator';
+
+// // Screens
+// import SignIn from './screens/SignIn';
+// import SignUp from './screens/SignUp';
+// import Home from './screens/Home';
+// import "./global.css"
+
+// const Stack = createNativeStackNavigator();
+
+// const App = () => {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator
+//         initialRouteName="SignIn"
+//         screenOptions={{ headerShown: false }}
+//       >
+//         <Stack.Screen name="SignIn" component={SignIn} />
+//         <Stack.Screen name="SignUp" component={SignUp} />
+//         <Stack.Screen name="Home" component={Home} />
+//         <AppNavigator />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+
+// export default App;
+
+
+// App.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import "./global.css"
 
 // Screens
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import Home from './screens/Home';
-import "./global.css"
+import HomeScreen from './screens/HomeScreen';
+import UpcomingJourneysScreen from './screens/UpcomingJourneysScreen';
+import DestinationSearchScreen from './screens/DestinationSearchScreen';
+import DestinationPreviewScreen from './screens/DestinationPreviewScreen';
+import JourneySetupScreen from './screens/JourneySetupScreen';
+import DateModeSelectionScreen from './screens/DateModeSelectionScreen';
+import MainScreen from './screens/MainScreen';
+import AppNavigator from './screens/AppNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -136,6 +177,18 @@ const App = () => {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Home" component={Home} />
+        
+        {/* Main app navigation */}
+        <Stack.Screen name="MainScreen" component={MainScreen} />
+        
+        {/* Individual screens */}
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="UpcomingJourneys" component={UpcomingJourneysScreen} />
+        <Stack.Screen name="DestinationSearch" component={DestinationSearchScreen} />
+        <Stack.Screen name="DestinationPreview" component={DestinationPreviewScreen} />
+        <Stack.Screen name="JourneySetup" component={JourneySetupScreen} />
+        <Stack.Screen name="Appnavigator" component={AppNavigator} />
+        <Stack.Screen name="DateModeSelection" component={DateModeSelectionScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

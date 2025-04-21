@@ -1,5 +1,8 @@
 {
   "expo": {
+     "plugins": [
+      "@react-native-community/datetimepicker"
+    ],
     "name": "VR-app",
     "slug": "VR-app",
     "newArchEnabled": true

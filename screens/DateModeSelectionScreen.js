@@ -1,162 +1,451 @@
-// screens/DateModeSelectionScreen.js
+// // screens/DateModeSelectionScreen.js
+// import React, { useState } from 'react';
+// import { View, Text, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
+// import { SafeAreaView } from 'react-native-safe-area-context';
+// import { Ionicons } from '@expo/vector-icons';
+// import DateTimePickerModal from "react-native-modal-datetime-picker";
+
+// const DateModeSelectionScreen = ({ route, navigation }) => {
+//   const { destination } = route.params;
+//   const [selectedDate, setSelectedDate] = useState(new Date());
+//   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+//   const [selectedTime, setSelectedTime] = useState(new Date());
+//   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+//   const [travelMode, setTravelMode] = useState('air');
+//   const [isPublic, setIsPublic] = useState(true);
+
+//   // Format date for display
+//   const formatDate = (date) => {
+//     return date.toLocaleDateString('en-US', { 
+//       weekday: 'short', 
+//       month: 'short', 
+//       day: 'numeric', 
+//       year: 'numeric' 
+//     });
+//   };
+
+//   // Format time for display
+//   const formatTime = (time) => {
+//     return time.toLocaleTimeString('en-US', { 
+//       hour: '2-digit', 
+//       minute: '2-digit' 
+//     });
+//   };
+
+//   // Date picker handlers
+//   const showDatePicker = () => {
+//     setDatePickerVisibility(true);
+//   };
+
+//   const hideDatePicker = () => {
+//     setDatePickerVisibility(false);
+//   };
+
+//   const handleDateConfirm = (date) => {
+//     setSelectedDate(date);
+//     hideDatePicker();
+//   };
+
+//   // Time picker handlers
+//   const showTimePicker = () => {
+//     setTimePickerVisibility(true);
+//   };
+
+//   const hideTimePicker = () => {
+//     setTimePickerVisibility(false);
+//   };
+
+//   const handleTimeConfirm = (time) => {
+//     setSelectedTime(time);
+//     hideTimePicker();
+//   };
+
+//   // Create journey
+//   const handleCreateJourney = () => {
+//     // In a real app, this would send a request to create the journey
+//     // Then navigate to the journey detail or back to home
+//     navigation.navigate('JourneySetup', {
+//       destination: destination.name,
+//       date: selectedDate,
+//       time: selectedTime,
+//       travelMode,
+//       isPublic
+//     });
+//   };
+
+//   return (
+//     <SafeAreaView className="flex-1 bg-white">
+//       <StatusBar barStyle="dark-content" />
+      
+//       {/* Header */}
+//       <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-200">
+//         <TouchableOpacity onPress={() => navigation.goBack()}>
+//           <Ionicons name="arrow-back" size={24} color="#4F46E5" />
+//         </TouchableOpacity>
+//         <Text className="text-xl font-bold text-gray-800">Plan Your Journey</Text>
+//         <View style={{ width: 24 }} /> {/* For layout balance */}
+//       </View>
+      
+//       <ScrollView className="flex-1 p-5">
+//         {/* Destination Info */}
+//         <View className="bg-gray-50 p-4 rounded-lg mb-6">
+//           <Text className="text-sm text-gray-500">Destination</Text>
+//           <Text className="text-xl font-bold text-gray-800">{destination.name}</Text>
+//         </View>
+        
+//         {/* Date Selection */}
+//         <Text className="text-lg font-bold text-gray-800 mb-3">When would you like to travel?</Text>
+        
+//         <TouchableOpacity 
+//           className="flex-row justify-between items-center bg-gray-50 p-4 rounded-lg mb-3"
+//           onPress={showDatePicker}
+//         >
+//           <View className="flex-row items-center">
+//             <Ionicons name="calendar-outline" size={22} color="#4F46E5" />
+//             <Text className="ml-3 text-gray-700">Date</Text>
+//           </View>
+//           <Text className="text-gray-800 font-medium">{formatDate(selectedDate)}</Text>
+//         </TouchableOpacity>
+        
+//         <DateTimePickerModal
+//           isVisible={isDatePickerVisible}
+//           mode="date"
+//           onConfirm={handleDateConfirm}
+//           onCancel={hideDatePicker}
+//           minimumDate={new Date()}
+//         />
+        
+//         <TouchableOpacity 
+//           className="flex-row justify-between items-center bg-gray-50 p-4 rounded-lg mb-6"
+//           onPress={showTimePicker}
+//         >
+//           <View className="flex-row items-center">
+//             <Ionicons name="time-outline" size={22} color="#4F46E5" />
+//             <Text className="ml-3 text-gray-700">Time</Text>
+//           </View>
+//           <Text className="text-gray-800 font-medium">{formatTime(selectedTime)}</Text>
+//         </TouchableOpacity>
+        
+//         <DateTimePickerModal
+//           isVisible={isTimePickerVisible}
+//           mode="time"
+//           onConfirm={handleTimeConfirm}
+//           onCancel={hideTimePicker}
+//         />
+        
+//         {/* Travel Mode */}
+//         <Text className="text-lg font-bold text-gray-800 mb-3">How would you like to travel?</Text>
+        
+//         <View className="flex-row justify-between mb-6">
+//           <TouchableOpacity 
+//             className={`w-24 h-24 items-center justify-center rounded-lg ${travelMode === 'air' ? 'bg-indigo-100' : 'bg-gray-50'}`}
+//             onPress={() => setTravelMode('air')}
+//           >
+//             <Ionicons 
+//               name="airplane-outline" 
+//               size={28} 
+//               color={travelMode === 'air' ? "#4F46E5" : "#6B7280"} 
+//             />
+//             <Text className={`mt-2 font-medium ${travelMode === 'air' ? 'text-indigo-700' : 'text-gray-700'}`}>Air</Text>
+//           </TouchableOpacity>
+          
+//           <TouchableOpacity 
+//             className={`w-24 h-24 items-center justify-center rounded-lg ${travelMode === 'sea' ? 'bg-indigo-100' : 'bg-gray-50'}`}
+//             onPress={() => setTravelMode('sea')}
+//           >
+//             <Ionicons 
+//               name="boat-outline" 
+//               size={28} 
+//               color={travelMode === 'sea' ? "#4F46E5" : "#6B7280"} 
+//             />
+//             <Text className={`mt-2 font-medium ${travelMode === 'sea' ? 'text-indigo-700' : 'text-gray-700'}`}>Sea</Text>
+//           </TouchableOpacity>
+          
+//           <TouchableOpacity 
+//             className={`w-24 h-24 items-center justify-center rounded-lg ${travelMode === 'land' ? 'bg-indigo-100' : 'bg-gray-50'}`}
+//             onPress={() => setTravelMode('land')}
+//           >
+//             <Ionicons 
+//               name="car-outline" 
+//               size={28} 
+//               color={travelMode === 'land' ? "#4F46E5" : "#6B7280"} 
+//             />
+//             <Text className={`mt-2 font-medium ${travelMode === 'land' ? 'text-indigo-700' : 'text-gray-700'}`}>Land</Text>
+//           </TouchableOpacity>
+//         </View>
+        
+//         {/* Privacy Setting */}
+//         <Text className="text-lg font-bold text-gray-800 mb-3">Journey Privacy</Text>
+        
+//         <View className="flex-row mb-6">
+//           <TouchableOpacity 
+//             className={`flex-1 p-4 rounded-lg mr-3 ${isPublic ? 'bg-indigo-100' : 'bg-gray-50'}`}
+//             onPress={() => setIsPublic(true)}
+//           >
+//             <Ionicons 
+//               name="globe-outline" 
+//               size={24} 
+//               color={isPublic ? "#4F46E5" : "#6B7280"} 
+//             />
+//             <Text className={`mt-2 font-medium ${isPublic ? 'text-indigo-700' : 'text-gray-700'}`}>Public</Text>
+//             <Text className={`text-xs mt-1 ${isPublic ? 'text-indigo-600' : 'text-gray-500'}`}>
+//               Others can join your journey
+//             </Text>
+//           </TouchableOpacity>
+          
+//           <TouchableOpacity 
+//             className={`flex-1 p-4 rounded-lg ${!isPublic ? 'bg-indigo-100' : 'bg-gray-50'}`}
+//             onPress={() => setIsPublic(false)}
+//           >
+//             <Ionicons 
+//               name="lock-closed-outline" 
+//               size={24} 
+//               color={!isPublic ? "#4F46E5" : "#6B7280"} 
+//             />
+//             <Text className={`mt-2 font-medium ${!isPublic ? 'text-indigo-700' : 'text-gray-700'}`}>Private</Text>
+//             <Text className={`text-xs mt-1 ${!isPublic ? 'text-indigo-600' : 'text-gray-500'}`}>
+//               Only people you invite
+//             </Text>
+//           </TouchableOpacity>
+//         </View>
+//       </ScrollView>
+      
+//       {/* Bottom Action Button */}
+//       <View className="p-4 border-t border-gray-200">
+//         <TouchableOpacity
+//           className="bg-indigo-600 py-4 rounded-xl shadow"
+//           onPress={handleCreateJourney}
+//         >
+//           <Text className="text-white font-bold text-center text-lg">
+//             Create Journey
+//           </Text>
+//         </TouchableOpacity>
+//       </View>
+//     </SafeAreaView>
+//   );
+// };
+
+// export default DateModeSelectionScreen;
+
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StatusBar,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { Calendar } from 'react-native-calendars';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const DateModeSelectionScreen = ({ route, navigation }) => {
-  const { destination } = route.params;
-  const destName = typeof destination === 'string' ? destination : destination.name;
-  
-  // Current date for minimum selectable date
-  const today = new Date();
-  const formattedToday = today.toISOString().split('T')[0];
-  
-  // State variables
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [selectedTransport, setSelectedTransport] = useState('');
-  
-  // Available time slots
-  const timeSlots = ['9:00 AM', '11:00 AM', '1:00 PM', '3:00 PM', '5:00 PM', '7:00 PM'];
-  
-  // Transport options
-  const transportOptions = [
-    { id: 'Flight', name: 'Flight', icon: 'airplane' },
-    { id: 'Train', name: 'Train', icon: 'train' },
-    { id: 'Boat', name: 'Boat', icon: 'boat' },
-    { id: 'Walking', name: 'Walking Tour', icon: 'walk' }
-  ];
-  
-  // Format markedDates for the calendar
-  const markedDates = {
-    ...(selectedDate ? { [selectedDate]: { selected: true, selectedColor: '#4F46E5' } } : {})
-  };
-  
-  // Check if all selections are made
-  const isSelectionComplete = selectedDate && selectedTime && selectedTransport;
-  
-  // Proceed to next screen
-  const handleContinue = () => {
-    navigation.navigate('TourCustomization', {
-      destination: destName,
-      date: selectedDate,
-      time: selectedTime,
-      transportMode: selectedTransport
+  const { destination } = route?.params || {};
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [selectedTime, setSelectedTime] = useState(new Date());
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+  const [travelMode, setTravelMode] = useState('air');
+  const [isPublic, setIsPublic] = useState(true);
+
+  const formatDate = (date) => {
+    return date.toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
     });
   };
-  
+
+  const formatTime = (time) => {
+    return time.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
+
+  const showDatePicker = () => setDatePickerVisibility(true);
+  const hideDatePicker = () => setDatePickerVisibility(false);
+  const handleDateConfirm = (date) => {
+    setSelectedDate(date);
+    hideDatePicker();
+  };
+
+  const showTimePicker = () => setTimePickerVisibility(true);
+  const hideTimePicker = () => setTimePickerVisibility(false);
+  const handleTimeConfirm = (time) => {
+    setSelectedTime(time);
+    hideTimePicker();
+  };
+
+  const handleCreateJourney = () => {
+    if (!navigation || typeof navigation.navigate !== 'function') {
+      console.warn('Navigation is not available');
+      return;
+    }
+
+    navigation.navigate('JourneySetup', {
+      destination: destination?.name,
+      date: selectedDate,
+      time: selectedTime,
+      travelMode,
+      isPublic,
+    });
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <StatusBar barStyle="dark-content" />
-      
-      <ScrollView className="flex-1">
-        <View className="p-4">
-          <Text className="text-2xl font-bold text-gray-800 mb-1">Schedule Your Tour</Text>
-          <Text className="text-gray-600 mb-6">Select a date, time, and mode of transport for your virtual visit to {destName}.</Text>
-          
-          {/* Calendar Section */}
-          <View className="mb-6">
-            <Text className="text-lg font-bold text-gray-800 mb-3">Select a Date</Text>
-            <View className="bg-gray-50 rounded-lg overflow-hidden">
-              <Calendar
-                minDate={formattedToday}
-                onDayPress={(day) => setSelectedDate(day.dateString)}
-                markedDates={markedDates}
-                theme={{
-                  selectedDayBackgroundColor: '#4F46E5',
-                  todayTextColor: '#4F46E5',
-                  arrowColor: '#4F46E5',
-                }}
+
+      {/* Header */}
+      <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-200">
+        <TouchableOpacity onPress={() => navigation?.goBack()}>
+          <Ionicons name="arrow-back" size={24} color="#4F46E5" />
+        </TouchableOpacity>
+        <Text className="text-xl font-bold text-gray-800">Plan Your Journey</Text>
+        <View style={{ width: 24 }} />
+      </View>
+
+      <ScrollView className="flex-1 p-5">
+        {/* Destination Info */}
+        <View className="bg-gray-50 p-4 rounded-lg mb-6">
+          <Text className="text-sm text-gray-500">Destination</Text>
+          <Text className="text-xl font-bold text-gray-800">
+            {destination?.name || 'Unknown'}
+          </Text>
+        </View>
+
+        {/* Date Picker */}
+        <Text className="text-lg font-bold text-gray-800 mb-3">
+          When would you like to travel?
+        </Text>
+
+        <TouchableOpacity
+          className="flex-row justify-between items-center bg-gray-50 p-4 rounded-lg mb-3"
+          onPress={showDatePicker}
+        >
+          <View className="flex-row items-center">
+            <Ionicons name="calendar-outline" size={22} color="#4F46E5" />
+            <Text className="ml-3 text-gray-700">Date</Text>
+          </View>
+          <Text className="text-gray-800 font-medium">{formatDate(selectedDate)}</Text>
+        </TouchableOpacity>
+
+        <DateTimePickerModal
+          isVisible={isDatePickerVisible}
+          mode="date"
+          onConfirm={handleDateConfirm}
+          onCancel={hideDatePicker}
+          minimumDate={new Date()}
+        />
+
+        {/* Time Picker */}
+        <TouchableOpacity
+          className="flex-row justify-between items-center bg-gray-50 p-4 rounded-lg mb-6"
+          onPress={showTimePicker}
+        >
+          <View className="flex-row items-center">
+            <Ionicons name="time-outline" size={22} color="#4F46E5" />
+            <Text className="ml-3 text-gray-700">Time</Text>
+          </View>
+          <Text className="text-gray-800 font-medium">{formatTime(selectedTime)}</Text>
+        </TouchableOpacity>
+
+        <DateTimePickerModal
+          isVisible={isTimePickerVisible}
+          mode="time"
+          onConfirm={handleTimeConfirm}
+          onCancel={hideTimePicker}
+        />
+
+        {/* Travel Mode */}
+        <Text className="text-lg font-bold text-gray-800 mb-3">How would you like to travel?</Text>
+
+        <View className="flex-row justify-between mb-6">
+          {['air', 'sea', 'land'].map((mode) => (
+            <TouchableOpacity
+              key={mode}
+              className={`w-24 h-24 items-center justify-center rounded-lg ${
+                travelMode === mode ? 'bg-indigo-100' : 'bg-gray-50'
+              }`}
+              onPress={() => setTravelMode(mode)}
+            >
+              <Ionicons
+                name={
+                  mode === 'air'
+                    ? 'airplane-outline'
+                    : mode === 'sea'
+                    ? 'boat-outline'
+                    : 'car-outline'
+                }
+                size={28}
+                color={travelMode === mode ? '#4F46E5' : '#6B7280'}
               />
-            </View>
-          </View>
-          
-          {/* Time Selection */}
-          <View className="mb-6">
-            <Text className="text-lg font-bold text-gray-800 mb-3">Select a Time</Text>
-            <View className="flex-row flex-wrap">
-              {timeSlots.map((time, index) => (
-                <TouchableOpacity 
-                  key={index}
-                  className={`mr-2 mb-2 px-4 py-2 rounded-full border ${
-                    selectedTime === time ? 'bg-indigo-600 border-indigo-600' : 'bg-white border-gray-300'
-                  }`}
-                  onPress={() => setSelectedTime(time)}
-                >
-                  <Text className={`${
-                    selectedTime === time ? 'text-white' : 'text-gray-700'
-                  }`}>
-                    {time}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-          
-          {/* Transport Mode */}
-          <View className="mb-6">
-            <Text className="text-lg font-bold text-gray-800 mb-3">Mode of Transport</Text>
-            <View className="bg-gray-50 rounded-lg p-4">
-              {transportOptions.map((option, index) => (
-                <TouchableOpacity 
-                  key={index}
-                  className={`flex-row items-center mb-3 p-3 rounded-lg border ${
-                    selectedTransport === option.id 
-                      ? 'bg-indigo-50 border-indigo-600' 
-                      : 'bg-white border-gray-200'
-                  }`}
-                  onPress={() => setSelectedTransport(option.id)}
-                >
-                  <View className={`w-10 h-10 rounded-full items-center justify-center ${
-                    selectedTransport === option.id ? 'bg-indigo-600' : 'bg-gray-200'
-                  }`}>
-                    <Ionicons 
-                      name={option.icon} 
-                      size={20} 
-                      color={selectedTransport === option.id ? 'white' : '#6B7280'} 
-                    />
-                  </View>
-                  <Text className={`ml-3 font-medium ${
-                    selectedTransport === option.id ? 'text-indigo-800' : 'text-gray-700'
-                  }`}>
-                    {option.name}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-          
-          {/* Selection Summary */}
-          {isSelectionComplete && (
-            <View className="bg-indigo-50 p-4 rounded-lg mb-6">
-              <Text className="font-bold text-indigo-800 mb-2">Your Tour Details</Text>
-              <View className="flex-row items-center mb-2">
-                <Ionicons name="calendar" size={16} color="#4F46E5" />
-                <Text className="text-gray-700 ml-2">Date: {selectedDate}</Text>
-              </View>
-              <View className="flex-row items-center mb-2">
-                <Ionicons name="time" size={16} color="#4F46E5" />
-                <Text className="text-gray-700 ml-2">Time: {selectedTime}</Text>
-              </View>
-              <View className="flex-row items-center">
-                <Ionicons name={transportOptions.find(t => t.id === selectedTransport)?.icon || 'airplane'} size={16} color="#4F46E5" />
-                <Text className="text-gray-700 ml-2">Transport: {selectedTransport}</Text>
-              </View>
-            </View>
-          )}
+              <Text
+                className={`mt-2 font-medium ${
+                  travelMode === mode ? 'text-indigo-700' : 'text-gray-700'
+                }`}
+              >
+                {mode.charAt(0).toUpperCase() + mode.slice(1)}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* Privacy Setting */}
+        <Text className="text-lg font-bold text-gray-800 mb-3">Journey Privacy</Text>
+
+        <View className="flex-row mb-6">
+          {/* Public Option */}
+          <TouchableOpacity
+            className={`flex-1 p-4 rounded-lg mr-3 ${isPublic ? 'bg-indigo-100' : 'bg-gray-50'}`}
+            onPress={() => setIsPublic(true)}
+          >
+            <Ionicons
+              name="globe-outline"
+              size={24}
+              color={isPublic ? '#4F46E5' : '#6B7280'}
+            />
+            <Text className={`mt-2 font-medium ${isPublic ? 'text-indigo-700' : 'text-gray-700'}`}>
+              Public
+            </Text>
+            <Text className={`text-xs mt-1 ${isPublic ? 'text-indigo-600' : 'text-gray-500'}`}>
+              Others can join your journey
+            </Text>
+          </TouchableOpacity>
+
+          {/* Private Option */}
+          <TouchableOpacity
+            className={`flex-1 p-4 rounded-lg ${!isPublic ? 'bg-indigo-100' : 'bg-gray-50'}`}
+            onPress={() => setIsPublic(false)}
+          >
+            <Ionicons
+              name="lock-closed-outline"
+              size={24}
+              color={!isPublic ? '#4F46E5' : '#6B7280'}
+            />
+            <Text
+              className={`mt-2 font-medium ${
+                !isPublic ? 'text-indigo-700' : 'text-gray-700'
+              }`}
+            >
+              Private
+            </Text>
+            <Text className={`text-xs mt-1 ${!isPublic ? 'text-indigo-600' : 'text-gray-500'}`}>
+              Only people you invite
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
-      
-      {/* Continue Button */}
-      <View className="bg-white p-4 border-t border-gray-200">
+
+      {/* Bottom Button */}
+      <View className="p-4 border-t border-gray-200">
         <TouchableOpacity
-          className={`py-3 rounded-lg ${isSelectionComplete ? 'bg-indigo-600' : 'bg-gray-300'}`}
-          onPress={handleContinue}
-          disabled={!isSelectionComplete}
+          className="bg-indigo-600 py-4 rounded-xl shadow"
+          onPress={handleCreateJourney}
         >
-          <Text className="text-white font-bold text-center text-lg">Continue to Customize</Text>
+          <Text className="text-white font-bold text-center text-lg">Create Journey</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

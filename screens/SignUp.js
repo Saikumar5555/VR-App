@@ -282,7 +282,7 @@
 
 // // Array of destination backgrounds
 // const backgrounds = [
-//   { id: 'paris', source: require('../assets/images/paris.jpg'), name: 'Paris' },
+//   { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
 //   { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
 
 //   { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
@@ -587,7 +587,7 @@ import {
 
 // Array of destination backgrounds
 const backgrounds = [
-  { id: 'paris', source: require('../assets/images/paris.jpg'), name: 'Paris' },
+  { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
   { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
   { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
 ];

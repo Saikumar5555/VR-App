@@ -269,7 +269,7 @@
 
 // // Array of destination backgrounds
 // const backgrounds = [
-//   { id: 'paris', source: require('../assets/images/paris.jpg'), name: 'Paris' },
+//   { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
 //   { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
   
 //   { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
@@ -536,6 +536,134 @@
 
 // export default SignIn;
 
+// import React, { useState } from 'react';
+// import {
+//   View,
+//   Text,
+//   TextInput,
+//   TouchableOpacity,
+//   Alert,
+//   Keyboard,
+//   ImageBackground,
+//   StatusBar,
+//   SafeAreaView,
+// } from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
+
+// // Array of destination backgrounds
+// const backgrounds = [
+//   { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
+//   { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
+//   { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
+// ];
+
+// const SignIn = () => {
+//   const navigation = useNavigation();
+//   const [phone, setPhone] = useState('');
+//   const [loading, setLoading] = useState(false);
+  
+//   // Select a random background
+//   const [background, setBackground] = useState(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
+
+//   const validatePhoneNumber = (phone) => /^[0-9]{10}$/.test(phone);
+
+//   const handleSignIn = () => {
+//     if (!validatePhoneNumber(phone)) {
+//       Alert.alert('Invalid Phone', 'Please enter a valid 10-digit phone number');
+//       return;
+//     }
+
+//     setLoading(true);
+//     Keyboard.dismiss();
+
+//     // Simulate login process
+//     setTimeout(() => {
+//       setLoading(false);
+//       // Use replace instead of navigate to avoid stacking screens
+//       navigation.replace('Home');
+//     }, 1000);
+//   };
+
+//   return (
+//     <>
+//       <StatusBar translucent backgroundColor="transparent" />
+//       <ImageBackground
+//         source={background.source}
+//         style={{ flex: 1, width: '100%', height: '100%' }}
+//         resizeMode="cover"
+//       >
+//         <SafeAreaView style={{ flex: 1 }}>
+//           {/* Semi-transparent overlay */}
+//           <View className="flex-1 bg-black/40 px-6 justify-center">
+//             {/* Destination Badge */}
+//             <View className="absolute top-12 right-6 bg-black/50 px-4 py-2 rounded-full">
+//               <Text className="text-white font-medium">{background.name}</Text>
+//             </View>
+
+//             {/* Content Container */}
+//             <View className="bg-white/90 p-6 rounded-2xl shadow-xl">
+//               {/* Header */}
+//               <View className="mb-6">
+//                 <Text className="text-3xl font-bold text-gray-900 mb-2">
+//                   Welcome Back
+//                 </Text>
+//                 <Text className="text-gray-600 text-base">
+//                   Sign in with your phone number
+//                 </Text>
+//               </View>
+
+//               {/* Phone Input */}
+//               <View className="mb-6">
+//                 <Text className="text-gray-700 mb-2 font-medium">Phone Number</Text>
+//                 <View className="flex-row items-center bg-white rounded-xl px-4 border border-gray-200">
+//                   <Text className="text-gray-700 font-medium mr-2">+91</Text>
+//                   <TextInput
+//                     className="flex-1 text-gray-900 text-lg py-3"
+//                     placeholder="Enter your number"
+//                     placeholderTextColor="#9CA3AF"
+//                     value={phone}
+//                     onChangeText={(text) => setPhone(text.replace(/\D/g, ''))}
+//                     keyboardType="phone-pad"
+//                     maxLength={10}
+//                     autoFocus
+//                   />
+//                 </View>
+//               </View>
+
+//               {/* Sign In Button */}
+//               <TouchableOpacity
+//                 className={`py-4 rounded-xl ${
+//                   !phone || phone.length < 10 || loading ? 'bg-indigo-300' : 'bg-indigo-600'
+//                 } shadow-md mb-6`}
+//                 onPress={handleSignIn}
+//                 disabled={!phone || phone.length < 10 || loading}
+//                 activeOpacity={0.8}
+//               >
+//                 <Text className="text-white text-center font-semibold text-lg">
+//                   {loading ? 'Signing In...' : 'Sign In'}
+//                 </Text>
+//               </TouchableOpacity>
+
+//               {/* Sign Up Link */}
+//               <View className="flex-row justify-center">
+//                 <Text className="text-gray-700">Don't have an account? </Text>
+//                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+//                   <Text className="text-indigo-600 font-medium">Sign up</Text>
+//                 </TouchableOpacity>
+//               </View>
+//             </View>
+//           </View>
+//         </SafeAreaView>
+//       </ImageBackground>
+//     </>
+//   );
+// };
+
+// export default SignIn;
+
+
+
+
 import React, { useState } from 'react';
 import {
   View,
@@ -552,7 +680,7 @@ import { useNavigation } from '@react-navigation/native';
 
 // Array of destination backgrounds
 const backgrounds = [
-  { id: 'paris', source: require('../assets/images/paris.jpg'), name: 'Paris' },
+  { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
   { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
   { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
 ];
@@ -561,9 +689,11 @@ const SignIn = () => {
   const navigation = useNavigation();
   const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   // Select a random background
-  const [background, setBackground] = useState(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
+  const [background, setBackground] = useState(
+    backgrounds[Math.floor(Math.random() * backgrounds.length)]
+  );
 
   const validatePhoneNumber = (phone) => /^[0-9]{10}$/.test(phone);
 
@@ -579,7 +709,6 @@ const SignIn = () => {
     // Simulate login process
     setTimeout(() => {
       setLoading(false);
-      // Use replace instead of navigate to avoid stacking screens
       navigation.replace('Home');
     }, 1000);
   };
@@ -595,9 +724,15 @@ const SignIn = () => {
         <SafeAreaView style={{ flex: 1 }}>
           {/* Semi-transparent overlay */}
           <View className="flex-1 bg-black/40 px-6 justify-center">
+
             {/* Destination Badge */}
             <View className="absolute top-12 right-6 bg-black/50 px-4 py-2 rounded-full">
               <Text className="text-white font-medium">{background.name}</Text>
+            </View>
+
+            {/* App Name on Background */}
+            <View className="absolute top-12 left-6">
+              <Text className="text-white text-4xl font-bold tracking-wide">ExploreEase</Text>
             </View>
 
             {/* Content Container */}
