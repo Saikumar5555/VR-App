@@ -1,10 +1,18 @@
 {
   "expo": {
-     "plugins": [
+    "plugins": [
       "@react-native-community/datetimepicker"
     ],
     "name": "VR-app",
     "slug": "VR-app",
-    "newArchEnabled": true
+    "newArchEnabled": true,
+    "extra": {
+      "eas": {
+        "projectId": "96d17de4-245c-4cff-8455-33e97dd4091f"
+      }
+    },
+    "android": {
+      "package": "com.intelliod1655675.VRapp"
+    }
   }
 }
