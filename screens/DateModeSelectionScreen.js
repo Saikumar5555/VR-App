@@ -580,13 +580,13 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
       <StatusBar barStyle="dark-content" />
 
       {/* Header */}
-      <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-200">
+      {/* <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-200">
         <TouchableOpacity onPress={() => navigation?.goBack()}>
           <Ionicons name="arrow-back" size={24} color="#4F46E5" />
         </TouchableOpacity>
         <Text className="text-xl font-bold text-gray-800">Plan Your Journey</Text>
         <View style={{ width: 24 }} />
-      </View>
+      </View> */}
 
       <ScrollView className="flex-1 p-5">
         {/* Destination Info */}
@@ -731,7 +731,7 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
           className="bg-indigo-600 py-4 rounded-xl shadow"
           onPress={handleCreateJourney}
         >
-          <Text className="text-white font-bold text-center text-lg">Create Journey</Text>
+          <Text className="text-white font-bold text-center text-lg">Next</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
