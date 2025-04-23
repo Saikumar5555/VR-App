@@ -25,7 +25,7 @@ const TourCustomizationScreen = ({ route, navigation }) => {
   });
   
   // Available languages
-  const languages = ['English', 'Spanish', 'French', 'German', 'Japanese', 'Hindi'];
+  const languages = ['Hindi', 'English', 'Telugu', 'Tamil', 'Malayalam', 'Kannada'];
   
   // Narrator voices
   const narratorVoices = ['Standard', 'Professional', 'Friendly', 'Dramatic'];

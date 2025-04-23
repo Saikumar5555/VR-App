@@ -270,9 +270,9 @@
 // // Array of destination backgrounds
 // const backgrounds = [
 //   { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
-//   { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
+//   { id: 'Redfort', source: require('../assets/images/Redfort.jpg'), name: 'Redfort' },
   
-//   { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
+//   { id: 'Goldentemple', source: require('../assets/images/Goldentemple.jpg'), name: 'Goldentemple' },
 // ];
 
 // const SignIn = () => {
@@ -553,8 +553,8 @@
 // // Array of destination backgrounds
 // const backgrounds = [
 //   { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
-//   { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
-//   { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
+//   { id: 'Redfort', source: require('../assets/images/Redfort.jpg'), name: 'Redfort' },
+//   { id: 'Goldentemple', source: require('../assets/images/Goldentemple.jpg'), name: 'Goldentemple' },
 // ];
 
 // const SignIn = () => {
@@ -681,8 +681,8 @@ import { useNavigation } from '@react-navigation/native';
 // Array of destination backgrounds
 const backgrounds = [
   { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
-  { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
-  { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
+  // { id: 'Redfort', source: require('../assets/images/Indiagate.jpg'), name: 'Redfort' },
+  // { id: 'Goldentemple', source: require('../assets/images/Goldentemple.jpg'), name: 'Goldentemple' },
 ];
 
 const SignIn = () => {
@@ -731,9 +731,14 @@ const SignIn = () => {
             </View>
 
             {/* App Name on Background */}
-            <View className="absolute top-12 left-6">
+            {/* <View className="absolute top-12 left-6">
               <Text className="text-white text-4xl font-bold tracking-wide">ExploreEase</Text>
-            </View>
+            </View> */}
+
+<View className="absolute top-32 left-6 w-full flex justify-center items-center">
+  <Text className="text-white text-4xl font-bold tracking-wide">ExploreEase</Text>
+</View>
+
 
             {/* Content Container */}
             <View className="bg-white/90 p-6 rounded-2xl shadow-xl">

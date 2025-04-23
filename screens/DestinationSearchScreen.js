@@ -15,30 +15,30 @@
 //   },
 //   {
 //     id: '2',
-//     name: 'Tokyo, Japan',
+//     name: ''Goldentemple, Punjab'',
 //     description: 'Modern metropolis with traditional temples and gardens',
-//     image: require('../assets/images/tokyo.jpg'),
+//     image: require('../assets/images/Goldentemple.jpg'),
 //     category: 'Urban'
 //   },
 //   {
 //     id: '3',
-//     name: 'Venice, Italy',
+//     name: 'charminar, Telangana',
 //     description: 'Romantic canal city with stunning architecture',
-//     image: require('../assets/images/venice.jpg'),
+//     image: require('../assets/images/charminar.jpg'),
 //     category: 'Cultural'
 //   },
 //   {
 //     id: '4',
-//     name: 'Bali, Indonesia',
+//     name: 'Indiagate, New Delhi',
 //     description: 'Tropical paradise with beaches and spiritual temples',
-//     image: require('../assets/images/bali.jpg'),
+//     image: require('../assets/images/Indiagate.jpg'),
 //     category: 'Beach'
 //   },
 //   {
 //     id: '5',
-//     name: 'New York City, USA',
+//     name: 'Red Fort, New Delhi',
 //     description: 'The Big Apple with iconic skyline and Central Park',
-//     image: require('../assets/images/newyork.jpg'),
+//     image: require('../assets/images/Redfort.jpg'),
 //     category: 'Urban'
 //   },
 //   {
@@ -183,63 +183,63 @@ const DESTINATIONS = [
   {
     id: '1',
     name: 'Agra, U.P',
-    description: 'City of Lights with iconic Eiffel Tower and rich history',
+    description: 'City of Love',
     image: require('../assets/images/Agra.jpg'),
-    category: 'Cultural'
-  },
-  {
-    id: '2',
-    name: 'Tokyo, Japan',
-    description: 'Modern metropolis with traditional temples and gardens',
-    image: require('../assets/images/tokyo.jpg'),
-    category: 'Urban'
-  },
-  {
-    id: '3',
-    name: 'Venice, Italy',
-    description: 'Romantic canal city with stunning architecture',
-    image: require('../assets/images/venice.jpg'),
-    category: 'Cultural'
-  },
-  {
-    id: '4',
-    name: 'Bali, Indonesia',
-    description: 'Tropical paradise with beaches and spiritual temples',
-    image: require('../assets/images/bali.jpg'),
-    category: 'Beach'
-  },
-  {
-    id: '5',
-    name: 'New York City, USA',
-    description: 'The Big Apple with iconic skyline and Central Park',
-    image: require('../assets/images/newyork.jpg'),
-    category: 'Urban'
-  },
-  {
-    id: '6',
-    name: 'Grand Canyon, USA',
-    description: 'Spectacular natural wonder with breathtaking views',
-    image: require('../assets/images/grandcanyon.jpg'),
-    category: 'Nature'
-  },
-  {
-    id: '7',
-    name: 'Cairo, Egypt',
-    description: 'Ancient civilization with pyramids and rich history',
-    image: require('../assets/images/cairo.jpg'),
     category: 'Historical'
   },
   {
-    id: '8',
-    name: 'Sydney, Australia',
-    description: 'Harbor city with iconic Opera House and beautiful beaches',
-    image: require('../assets/images/sydney.jpg'),
-    category: 'Urban'
-  }
+    id: '2',
+    name: 'Goldentemple, Punjab',
+    description: 'City of Spirituality',
+    image: require('../assets/images/Goldentemple.jpg'),
+    category: 'Cultural'
+  },
+  {
+    id: '3',
+    name: 'charminar, Telangana',
+    description: 'City of Pearls',
+    image: require('../assets/images/charminar.jpg'),
+    category: 'Historical'
+  },
+  {
+    id: '4',
+    name: 'Indiagate, New Delhi',
+    description: 'City of Remembrance',
+    image: require('../assets/images/Indiagate.jpg'),
+    category: 'Historical'
+  },
+  {
+    id: '5',
+    name: 'Red Fort, New Delhi',
+    description: 'City of Kings',
+    image: require('../assets/images/Redfort.jpg'),
+    category: 'Cultural'
+  },
+  // {
+  //   id: '6',
+  //   name: 'Grand Canyon, USA',
+  //   description: 'Spectacular natural wonder with breathtaking views',
+  //   image: require('../assets/images/grandcanyon.jpg'),
+  //   category: 'Nature'
+  // },
+  // {
+  //   id: '7',
+  //   name: 'Cairo, Egypt',
+  //   description: 'Ancient civilization with pyramids and rich history',
+  //   image: require('../assets/images/cairo.jpg'),
+  //   category: 'Historical'
+  // },
+  // {
+  //   id: '8',
+  //   name: 'Sydney, Australia',
+  //   description: 'Harbor city with iconic Opera House and beautiful beaches',
+  //   image: require('../assets/images/sydney.jpg'),
+  //   category: 'Urban'
+  // }
 ];
 
 // Categories for filtering
-const CATEGORIES = ['All', 'Cultural', 'Urban', 'Beach', 'Nature', 'Historical'];
+const CATEGORIES = ['All',  'Historical','Cultural', 'Urban', 'Beach', 'Nature',];
 
 const DestinationSearchScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');

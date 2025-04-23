@@ -7,19 +7,19 @@
 // // Map of destination images
 // const destinationImages = {
 //   'Agra, U.P': require('../assets/images/Agra.jpg'),
-//   'Tokyo, Japan': require('../assets/images/tokyo.jpg'),
-//   'Venice, Italy': require('../assets/images/venice.jpg'),
-//   'Bali, Indonesia': require('../assets/images/bali.jpg'),
-//   'New York City, USA': require('../assets/images/newyork.jpg'),
+//   ''Goldentemple, Punjab'': require('../assets/images/Goldentemple.jpg'),
+//   'charminar, Telangana': require('../assets/images/charminar.jpg'),
+//   'Indiagate, New Delhi': require('../assets/images/Indiagate.jpg'),
+//   'Red Fort, New Delhi': require('../assets/images/Redfort.jpg'),
 //   'Grand Canyon, USA': require('../assets/images/grandcanyon.jpg'),
 //   'Cairo, Egypt': require('../assets/images/cairo.jpg'),
 //   'Sydney, Australia': require('../assets/images/sydney.jpg'),
 //   // Shorter names for when destinations are referred to briefly
 //   'Agra': require('../assets/images/Agra.jpg'),
-//   'Tokyo': require('../assets/images/tokyo.jpg'),
-//   'Venice': require('../assets/images/venice.jpg'),
-//   'Bali': require('../assets/images/bali.jpg'),
-//   'New York': require('../assets/images/newyork.jpg')
+//   'Goldentemple': require('../assets/images/Goldentemple.jpg'),
+//   'charminar': require('../assets/images/charminar.jpg'),
+//   'Indiagate': require('../assets/images/Indiagate.jpg'),
+//   'Redfort': require('../assets/images/Redfort.jpg')
 // };
 
 // // Default image for destinations without a specific image
@@ -46,14 +46,14 @@
 //       'Sensory-friendly options'
 //     ]
 //   },
-//   'Tokyo, Japan': {
-//     name: 'Tokyo, Japan',
+//   ''Goldentemple, Punjab'': {
+//     name: ''Goldentemple, Punjab'',
 //     tagline: 'Where Tradition Meets Future',
-//     description: 'Explore the fascinating contrasts of Tokyo, from ultramodern skyscrapers to historic temples. Experience the bustling Shibuya Crossing, tranquil gardens, diverse cuisine, and vibrant pop culture. Tokyo offers an unforgettable blend of ancient traditions and cutting-edge innovation.',
+//     description: 'Explore the fascinating contrasts of Goldentemple, from ultramodern skyscrapers to historic temples. Experience the bustling Shibuya Crossing, tranquil gardens, diverse cuisine, and vibrant pop culture. Goldentemple offers an unforgettable blend of ancient traditions and cutting-edge innovation.',
 //     rating: 4.7,
 //     highlights: [
 //       'Shibuya Crossing',
-//       'Tokyo Skytree',
+//       'Goldentemple Skytree',
 //       'Senso-ji Temple',
 //       'Shinjuku Gyoen',
 //       'Akihabara'
@@ -146,7 +146,7 @@
         
 //         {/* Highlights */}
 //         <View className="mb-6">
-//           <Text className="text-lg font-bold text-gray-800 mb-2">Top Highlights</Text>
+//           <Text className="text-lg font-bold text-gray-800 mb-2"></Text>
 //           <View className="bg-gray-50 rounded-lg p-4">
 //             {destData.highlights.map((highlight, idx) => (
 //               <View key={idx} className="flex-row items-center mb-2">
@@ -199,19 +199,19 @@ import { Ionicons } from '@expo/vector-icons';
 // Map of destination images
 const destinationImages = {
   'Agra, U.P': require('../assets/images/Agra.jpg'),
-  'Tokyo, Japan': require('../assets/images/tokyo.jpg'),
-  'Venice, Italy': require('../assets/images/venice.jpg'),
-  'Bali, Indonesia': require('../assets/images/bali.jpg'),
-  'New York City, USA': require('../assets/images/newyork.jpg'),
+  'Goldentemple, Punjab': require('../assets/images/Goldentemple.jpg'),
+  'charminar, Telangana': require('../assets/images/charminar.jpg'),
+  'Indiagate, New Delhi': require('../assets/images/Indiagate.jpg'),
+  'Red Fort, New Delhi': require('../assets/images/Redfort.jpg'),
   'Grand Canyon, USA': require('../assets/images/grandcanyon.jpg'),
   'Cairo, Egypt': require('../assets/images/cairo.jpg'),
   'Sydney, Australia': require('../assets/images/sydney.jpg'),
   // Shorter names for when destinations are referred to briefly
   'Agra': require('../assets/images/Agra.jpg'),
-  'Tokyo': require('../assets/images/tokyo.jpg'),
-  'Venice': require('../assets/images/venice.jpg'),
-  'Bali': require('../assets/images/bali.jpg'),
-  'New York': require('../assets/images/newyork.jpg')
+  'Goldentemple': require('../assets/images/Goldentemple.jpg'),
+  'charminar': require('../assets/images/charminar.jpg'),
+  'Indiagate': require('../assets/images/Indiagate.jpg'),
+  'Redfort': require('../assets/images/Redfort.jpg')
 };
 
 // Default image for destinations without a specific image
@@ -221,15 +221,14 @@ const defaultImage = require('../assets/images/Agra.jpg');
 const DESTINATION_DETAILS = {
   'Agra, U.P': {
     name: 'Agra, U.P',
-    tagline: 'City of Lights',
-    description: 'Discover the romance and elegance of Agra, with its iconic Eiffel Tower, historic Notre Dame Cathedral, world-class museums like the Louvre, and charming café culture. Experience the magic of strolling along the Seine River and exploring the artistic districts of Montmartre.',
+    tagline: 'City of Love',
+    description: 'The Taj Mahal, often called the "City of Love," is an exquisite white marble mausoleum built by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal. It is renowned worldwide for its stunning architecture, intricate carvings, and serene gardens, making it a symbol of eternal love and one of the most visited tourist destinations in India.',
     rating: 4.8,
     highlights: [
-      'Eiffel Tower',
-      'Louvre Museum',
-      'Notre Dame Cathedral',
-      'Champs-Élysées',
-      'Montmartre'
+      'Taj Mahal',
+      'Agra Fort',
+      'Fatepur Sikri',
+      'Itmad-ud-Daula'
     ],
     accessibility: [
       'Audio descriptions available',
@@ -238,17 +237,19 @@ const DESTINATION_DETAILS = {
       'Sensory-friendly options'
     ]
   },
-  'Tokyo, Japan': {
-    name: 'Tokyo, Japan',
-    tagline: 'Where Tradition Meets Future',
-    description: 'Explore the fascinating contrasts of Tokyo, from ultramodern skyscrapers to historic temples. Experience the bustling Shibuya Crossing, tranquil gardens, diverse cuisine, and vibrant pop culture. Tokyo offers an unforgettable blend of ancient traditions and cutting-edge innovation.',
+  'Goldentemple, Punjab': {
+    name: 'Goldentemple, Punjab',
+    tagline: 'Where Spirituality Meets Serenity',
+    description: 'The Golden Temple, also known as Harmandir Sahib, is a revered spiritual site located in Amritsar, India. It is the holiest Gurdwara for Sikhs, known for its stunning golden architecture and tranquil surroundings. The temple is surrounded by a serene pool, reflecting the temple’s majestic beauty. The Golden Temple is not only a symbol of faith, devotion, and unity but also a place of peace and inclusivity, welcoming people from all walks of life. It stands as a beacon of humility, service, and the Sikh teachings of equality and selflessness, making it one of the most iconic landmarks and a must-visit destination in India.',
     rating: 4.7,
     highlights: [
-      'Shibuya Crossing',
-      'Tokyo Skytree',
-      'Senso-ji Temple',
-      'Shinjuku Gyoen',
-      'Akihabara'
+      'Golden Temple',
+
+      'Jallianwala Bagh',
+
+      'Wagah Border',
+
+      'Durgiana Temple'
     ],
     accessibility: [
       'Audio descriptions available',

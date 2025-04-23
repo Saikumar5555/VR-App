@@ -227,6 +227,235 @@
 
 // export default DateModeSelectionScreen;
 
+// import React, { useState } from 'react';
+// import {
+//   View,
+//   Text,
+//   TouchableOpacity,
+//   ScrollView,
+//   StatusBar,
+// } from 'react-native';
+// import { SafeAreaView } from 'react-native-safe-area-context';
+// import { Ionicons } from '@expo/vector-icons';
+// import DateTimePickerModal from 'react-native-modal-datetime-picker';
+
+// const DateModeSelectionScreen = ({ route, navigation }) => {
+//   const { destination } = route?.params || {};
+
+//   const [selectedDate, setSelectedDate] = useState(new Date());
+//   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+//   const [selectedTime, setSelectedTime] = useState(new Date());
+//   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+//   const [travelMode, setTravelMode] = useState('air');
+//   const [isPublic, setIsPublic] = useState(true);
+
+//   const formatDate = (date) => {
+//     return date.toLocaleDateString('en-US', {
+//       weekday: 'short',
+//       month: 'short',
+//       day: 'numeric',
+//       year: 'numeric',
+//     });
+//   };
+
+//   const formatTime = (time) => {
+//     return time.toLocaleTimeString('en-US', {
+//       hour: '2-digit',
+//       minute: '2-digit',
+//     });
+//   };
+
+//   const showDatePicker = () => setDatePickerVisibility(true);
+//   const hideDatePicker = () => setDatePickerVisibility(false);
+//   const handleDateConfirm = (date) => {
+//     setSelectedDate(date);
+//     hideDatePicker();
+//   };
+
+//   const showTimePicker = () => setTimePickerVisibility(true);
+//   const hideTimePicker = () => setTimePickerVisibility(false);
+//   const handleTimeConfirm = (time) => {
+//     setSelectedTime(time);
+//     hideTimePicker();
+//   };
+
+//   const handleCreateJourney = () => {
+//     if (!navigation || typeof navigation.navigate !== 'function') {
+//       console.warn('Navigation is not available');
+//       return;
+//     }
+
+//     navigation.navigate('JourneySetup', {
+//       destination: destination?.name,
+//       date: selectedDate,
+//       time: selectedTime,
+//       travelMode,
+//       isPublic,
+//     });
+//   };
+
+//   return (
+//     <SafeAreaView className="flex-1 bg-white">
+//       <StatusBar barStyle="dark-content" />
+
+//       {/* Header */}
+//       <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-200">
+//         <TouchableOpacity onPress={() => navigation?.goBack()}>
+//           <Ionicons name="arrow-back" size={24} color="#4F46E5" />
+//         </TouchableOpacity>
+//         <Text className="text-xl font-bold text-gray-800">Plan Your Journey</Text>
+//         <View style={{ width: 24 }} />
+//       </View>
+
+//       <ScrollView className="flex-1 p-5">
+//         {/* Destination Info */}
+//         <View className="bg-gray-50 p-4 rounded-lg mb-6">
+//           <Text className="text-sm text-gray-500">Destination</Text>
+//           <Text className="text-xl font-bold text-gray-800">
+//             {destination?.name || 'Unknown'}
+//           </Text>
+//         </View>
+
+//         {/* Date Picker */}
+//         <Text className="text-lg font-bold text-gray-800 mb-3">
+//           When would you like to travel?
+//         </Text>
+
+//         <TouchableOpacity
+//           className="flex-row justify-between items-center bg-gray-50 p-4 rounded-lg mb-3"
+//           onPress={showDatePicker}
+//         >
+//           <View className="flex-row items-center">
+//             <Ionicons name="calendar-outline" size={22} color="#4F46E5" />
+//             <Text className="ml-3 text-gray-700">Date</Text>
+//           </View>
+//           <Text className="text-gray-800 font-medium">{formatDate(selectedDate)}</Text>
+//         </TouchableOpacity>
+
+//         <DateTimePickerModal
+//           isVisible={isDatePickerVisible}
+//           mode="date"
+//           onConfirm={handleDateConfirm}
+//           onCancel={hideDatePicker}
+//           minimumDate={new Date()}
+//         />
+
+//         {/* Time Picker */}
+//         <TouchableOpacity
+//           className="flex-row justify-between items-center bg-gray-50 p-4 rounded-lg mb-6"
+//           onPress={showTimePicker}
+//         >
+//           <View className="flex-row items-center">
+//             <Ionicons name="time-outline" size={22} color="#4F46E5" />
+//             <Text className="ml-3 text-gray-700">Time</Text>
+//           </View>
+//           <Text className="text-gray-800 font-medium">{formatTime(selectedTime)}</Text>
+//         </TouchableOpacity>
+
+//         <DateTimePickerModal
+//           isVisible={isTimePickerVisible}
+//           mode="time"
+//           onConfirm={handleTimeConfirm}
+//           onCancel={hideTimePicker}
+//         />
+
+//         {/* Travel Mode */}
+//         <Text className="text-lg font-bold text-gray-800 mb-3">How would you like to travel?</Text>
+
+//         <View className="flex-row justify-between mb-6">
+//           {['air', 'sea', 'land'].map((mode) => (
+//             <TouchableOpacity
+//               key={mode}
+//               className={`w-24 h-24 items-center justify-center rounded-lg ${
+//                 travelMode === mode ? 'bg-indigo-100' : 'bg-gray-50'
+//               }`}
+//               onPress={() => setTravelMode(mode)}
+//             >
+//               <Ionicons
+//                 name={
+//                   mode === 'air'
+//                     ? 'airplane-outline'
+//                     : mode === 'sea'
+//                     ? 'boat-outline'
+//                     : 'car-outline'
+//                 }
+//                 size={28}
+//                 color={travelMode === mode ? '#4F46E5' : '#6B7280'}
+//               />
+//               <Text
+//                 className={`mt-2 font-medium ${
+//                   travelMode === mode ? 'text-indigo-700' : 'text-gray-700'
+//                 }`}
+//               >
+//                 {mode.charAt(0).toUpperCase() + mode.slice(1)}
+//               </Text>
+//             </TouchableOpacity>
+//           ))}
+//         </View>
+
+//         {/* Privacy Setting */}
+//         <Text className="text-lg font-bold text-gray-800 mb-3">Journey Privacy</Text>
+
+//         <View className="flex-row mb-6">
+//           {/* Public Option */}
+//           <TouchableOpacity
+//             className={`flex-1 p-4 rounded-lg mr-3 ${isPublic ? 'bg-indigo-100' : 'bg-gray-50'}`}
+//             onPress={() => setIsPublic(true)}
+//           >
+//             <Ionicons
+//               name="globe-outline"
+//               size={24}
+//               color={isPublic ? '#4F46E5' : '#6B7280'}
+//             />
+//             <Text className={`mt-2 font-medium ${isPublic ? 'text-indigo-700' : 'text-gray-700'}`}>
+//               Public
+//             </Text>
+//             <Text className={`text-xs mt-1 ${isPublic ? 'text-indigo-600' : 'text-gray-500'}`}>
+//               Others can join your journey
+//             </Text>
+//           </TouchableOpacity>
+
+//           {/* Private Option */}
+//           <TouchableOpacity
+//             className={`flex-1 p-4 rounded-lg ${!isPublic ? 'bg-indigo-100' : 'bg-gray-50'}`}
+//             onPress={() => setIsPublic(false)}
+//           >
+//             <Ionicons
+//               name="lock-closed-outline"
+//               size={24}
+//               color={!isPublic ? '#4F46E5' : '#6B7280'}
+//             />
+//             <Text
+//               className={`mt-2 font-medium ${
+//                 !isPublic ? 'text-indigo-700' : 'text-gray-700'
+//               }`}
+//             >
+//               Private
+//             </Text>
+//             <Text className={`text-xs mt-1 ${!isPublic ? 'text-indigo-600' : 'text-gray-500'}`}>
+//               Only people you invite
+//             </Text>
+//           </TouchableOpacity>
+//         </View>
+//       </ScrollView>
+
+//       {/* Bottom Button */}
+//       <View className="p-4 border-t border-gray-200">
+//         <TouchableOpacity
+//           className="bg-indigo-600 py-4 rounded-xl shadow"
+//           onPress={handleCreateJourney}
+//         >
+//           <Text className="text-white font-bold text-center text-lg">Create Journey</Text>
+//         </TouchableOpacity>
+//       </View>
+//     </SafeAreaView>
+//   );
+// };
+
+// export default DateModeSelectionScreen;
+
+
+
 import React, { useState } from 'react';
 import {
   View,
@@ -234,6 +463,8 @@ import {
   TouchableOpacity,
   ScrollView,
   StatusBar,
+  Share,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -279,6 +510,29 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
     hideTimePicker();
   };
 
+  const handleShareLink = async () => {
+    try {
+      const journeyId = Math.random().toString(36).substring(2, 10); // Generate a simple random ID
+      const result = await Share.share({
+        message: `Join my private journey to ${destination?.name || 'my destination'} on ${formatDate(selectedDate)} at ${formatTime(selectedTime)}. Use this code: ${journeyId}`,
+      });
+      
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+          Alert.alert('Success', 'Invitation link shared successfully!');
+        } else {
+          // shared
+          Alert.alert('Success', 'Invitation link shared successfully!');
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      Alert.alert('Error', error.message);
+    }
+  };
+
   const handleCreateJourney = () => {
     if (!navigation || typeof navigation.navigate !== 'function') {
       console.warn('Navigation is not available');
@@ -289,9 +543,36 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
       destination: destination?.name,
       date: selectedDate,
       time: selectedTime,
-      travelMode,
+      travelMode: travelMode, // This ensures the selected travel mode is passed correctly
       isPublic,
     });
+  };
+
+  // Returns the appropriate icon based on travel mode
+  const getTravelModeIcon = (mode) => {
+    switch(mode) {
+      case 'air':
+        return 'airplane-outline';
+      case 'sea':
+        return 'boat-outline';
+      case 'land':
+        return 'car-outline';
+      case 'train':
+        return 'train-outline';
+      default:
+        return 'help-outline';
+    }
+  };
+
+  // Returns display name for travel mode
+  const getTravelModeName = (mode) => {
+    const names = {
+      'air': 'Air',
+      'sea': 'Sea',
+      'land': 'Land',
+      'train': 'Train'
+    };
+    return names[mode] || mode.charAt(0).toUpperCase() + mode.slice(1);
   };
 
   return (
@@ -362,23 +643,17 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
         {/* Travel Mode */}
         <Text className="text-lg font-bold text-gray-800 mb-3">How would you like to travel?</Text>
 
-        <View className="flex-row justify-between mb-6">
-          {['air', 'sea', 'land'].map((mode) => (
+        <View className="flex-row justify-between flex-wrap mb-6">
+          {['air',  'land', 'train'].map((mode) => (
             <TouchableOpacity
               key={mode}
-              className={`w-24 h-24 items-center justify-center rounded-lg ${
+              className={`w-1/4 items-center justify-center rounded-lg py-3 ${
                 travelMode === mode ? 'bg-indigo-100' : 'bg-gray-50'
-              }`}
+              } ${mode === 'train' || mode === 'land' ? 'mt-3' : ''}`}
               onPress={() => setTravelMode(mode)}
             >
               <Ionicons
-                name={
-                  mode === 'air'
-                    ? 'airplane-outline'
-                    : mode === 'sea'
-                    ? 'boat-outline'
-                    : 'car-outline'
-                }
+                name={getTravelModeIcon(mode)}
                 size={28}
                 color={travelMode === mode ? '#4F46E5' : '#6B7280'}
               />
@@ -387,7 +662,7 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
                   travelMode === mode ? 'text-indigo-700' : 'text-gray-700'
                 }`}
               >
-                {mode.charAt(0).toUpperCase() + mode.slice(1)}
+                {getTravelModeName(mode)}
               </Text>
             </TouchableOpacity>
           ))}
@@ -437,6 +712,17 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
             </Text>
           </TouchableOpacity>
         </View>
+
+        {/* Share Link Button (visible only when Private is selected) */}
+        {!isPublic && (
+          <TouchableOpacity
+            className="bg-indigo-100 py-3 px-4 rounded-lg mb-6 flex-row items-center justify-center"
+            onPress={handleShareLink}
+          >
+            <Ionicons name="share-social-outline" size={20} color="#4F46E5" />
+            <Text className="text-indigo-700 font-medium ml-2">Share Invitation Link</Text>
+          </TouchableOpacity>
+        )}
       </ScrollView>
 
       {/* Bottom Button */}

@@ -7,10 +7,10 @@
 // // Define city images in an object for easy reference
 // const cityImages = {
 //   Agra: require('../assets/images/Agra.jpg'),
-//   Tokyo: require('../assets/images/tokyo.jpg'),
-//   'New York': require('../assets/images/newyork.jpg'),
-//   Venice: require('../assets/images/venice.jpg'),
-//   Bali: require('../assets/images/bali.jpg')
+//   Goldentemple: require('../assets/images/Goldentemple.jpg'),
+//   'Redfort': require('../assets/images/Redfort.jpg'),
+//   charminar: require('../assets/images/charminar.jpg'),
+//   Indiagate: require('../assets/images/Indiagate.jpg')
 // };
 
 // const HomeScreen = ({ navigation }) => {
@@ -65,7 +65,7 @@
 //           <Text className="text-xl font-bold text-gray-800 mb-4">Popular Destinations</Text>
           
 //           <ScrollView horizontal showsHorizontalScrollIndicator={false} className="pb-4">
-//             {['Agra', 'Tokyo', 'New York', 'Venice', 'Bali'].map((city, index) => (
+//             {['Agra', 'Goldentemple', 'Redfort', 'charminar', 'Indiagate'].map((city, index) => (
 //               <TouchableOpacity 
 //                 key={index}
 //                 className="mr-4"
@@ -126,10 +126,10 @@ import { Ionicons } from '@expo/vector-icons';
 // Define city images in an object for easy reference
 const cityImages = {
   Agra: require('../assets/images/Agra.jpg'),
-  Tokyo: require('../assets/images/tokyo.jpg'),
-  'New York': require('../assets/images/newyork.jpg'),
-  Venice: require('../assets/images/venice.jpg'),
-  Bali: require('../assets/images/bali.jpg')
+  Goldentemple: require('../assets/images/Goldentemple.jpg'),
+  'Redfort': require('../assets/images/Redfort.jpg'),
+  charminar: require('../assets/images/charminar.jpg'),
+  Indiagate: require('../assets/images/Indiagate.jpg')
 };
 
 const HomeScreen = ({ navigation, switchTab }) => {
@@ -195,7 +195,7 @@ const HomeScreen = ({ navigation, switchTab }) => {
           <Text className="text-xl font-bold text-gray-800 mb-4">Popular Destinations</Text>
           
           <ScrollView horizontal showsHorizontalScrollIndicator={false} className="pb-4">
-            {['Agra', 'Tokyo', 'New York', 'Venice', 'Bali'].map((city, index) => (
+            {['Agra', 'Goldentemple', 'Redfort', 'charminar', 'Indiagate'].map((city, index) => (
               <TouchableOpacity 
                 key={index}
                 className="mr-4"

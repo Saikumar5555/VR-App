@@ -283,9 +283,9 @@
 // // Array of destination backgrounds
 // const backgrounds = [
 //   { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
-//   { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
+//   { id: 'Redfort', source: require('../assets/images/Redfort.jpg'), name: 'Redfort' },
 
-//   { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
+//   { id: 'Goldentemple', source: require('../assets/images/Goldentemple.jpg'), name: 'Goldentemple' },
 // ];
 
 // const SignUp = ({ navigation }) => {
@@ -588,8 +588,8 @@ import {
 // Array of destination backgrounds
 const backgrounds = [
   { id: 'Agra', source: require('../assets/images/Agra.jpg'), name: 'Agra' },
-  { id: 'newyork', source: require('../assets/images/newyork.jpg'), name: 'New York' },
-  { id: 'tokyo', source: require('../assets/images/tokyo.jpg'), name: 'Tokyo' },
+  { id: 'Redfort', source: require('../assets/images/Redfort.jpg'), name: 'Redfort' },
+  { id: 'Goldentemple', source: require('../assets/images/Goldentemple.jpg'), name: 'Goldentemple' },
 ];
 
 const SignUp = ({ navigation }) => {
