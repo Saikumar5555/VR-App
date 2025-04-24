@@ -102,7 +102,7 @@ const UpcomingStack = () => {
         headerShown: true,
       }}
     >
-      <Stack.Screen name="UpcomingMain" component={UpcomingJourneysScreen} />
+      <Stack.Screen name="Upcoming" component={UpcomingJourneysScreen} />
       <Stack.Screen name="JourneySetup" component={JourneySetupScreen} />
       <Stack.Screen name="DestinationSearch" component={DestinationSearchScreen} />
     </Stack.Navigator>

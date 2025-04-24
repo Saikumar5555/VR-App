@@ -461,7 +461,7 @@ const Home = () => {
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'ExploreEase' }} />
         <Stack.Screen name="DestinationSearch" component={DestinationSearchScreen} options={{ title: 'Find Destinations' }} />
         <Stack.Screen name="DestinationPreview" component={DestinationPreviewScreen} options={{ title: 'Destination Preview' }} />
-        <Stack.Screen name="DateModeSelection" component={DateModeSelectionScreen} options={{ title: 'Schedule Your Tour' }} />
+        <Stack.Screen name="DateModeSelection" component={DateModeSelectionScreen}  options={({ route }) => ({title: route.params?.mode || 'Tour'})} />
         <Stack.Screen name="TourCustomization" component={TourCustomizationScreen} options={{ title: 'Customize Tour' }} />
         <Stack.Screen name="TripSummary" component={TripSummaryScreen} options={{ title: 'Trip Summary' }} />
 

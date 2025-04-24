@@ -538,7 +538,8 @@ const SettingSwitch = ({ icon, label, value, onValueChange }) => (
 const JourneySetupScreen = ({ route, navigation }) => {
   // Make sure route.params is defined before trying to destructure
   const params = route?.params || {};
-  
+  const {mode} = route.params
+  console.log("journey data:", mode)
   // Log the raw received route object for debugging
   console.log('Full route object:', route);
   console.log('Route params object:', params);
@@ -762,16 +763,24 @@ const JourneySetupScreen = ({ route, navigation }) => {
       </ScrollView>
 
       <View className="bg-white p-4 border-t border-gray-200">
-        <TouchableOpacity
-          className="bg-indigo-600 py-4 rounded-xl shadow"
-          onPress={() => navigation.navigate('VRJourney', { 
-            destination: destName, 
-            transportMode: finalTransportMode, 
+      <TouchableOpacity
+      className="bg-indigo-600 py-4 rounded-xl shadow"
+      onPress={() => {
+        if (mode === 'Schedule Your Tour') {
+          navigation.navigate('HomeScreen'); // or any screen you want
+        } else {
+          navigation.navigate('VRJourney', {
+            destination: destName,
+            transportMode: finalTransportMode,
             viewMode: selectedViewMode,
-            settings
-          })}
-        >
-          <Text className="text-white font-bold text-center text-lg">Start Journey</Text>
+            settings,
+          });
+        }
+      }}
+    >
+      <Text className="text-white font-bold text-center text-lg">
+        {mode === 'Schedule Your Tour' ? 'Schedule Journey' : 'Start Instant Journey'}
+      </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

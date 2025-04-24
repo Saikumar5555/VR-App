@@ -464,15 +464,33 @@ import {
   ScrollView,
   StatusBar,
   Share,
+  Image,
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
+
+const destinationImages = {
+  'Agra, U.P': require('../assets/images/Agra.jpg'),
+  'Goldentemple, Punjab': require('../assets/images/Goldentemple.jpg'),
+  'charminar, Telangana': require('../assets/images/charminar.jpg'),
+  'Indiagate, New Delhi': require('../assets/images/Indiagate.jpg'),
+  'Red Fort, New Delhi': require('../assets/images/Redfort.jpg'),
+  'Grand Canyon, USA': require('../assets/images/grandcanyon.jpg'),
+  'Cairo, Egypt': require('../assets/images/cairo.jpg'),
+  'Sydney, Australia': require('../assets/images/sydney.jpg'),
+  'Agra': require('../assets/images/Agra.jpg'),
+  'Goldentemple': require('../assets/images/Goldentemple.jpg'),
+  'charminar': require('../assets/images/charminar.jpg'),
+  'Indiagate': require('../assets/images/Indiagate.jpg'),
+  'Redfort': require('../assets/images/Redfort.jpg')
+};
 const DateModeSelectionScreen = ({ route, navigation }) => {
   const { destination } = route?.params || {};
-
+  const {mode} = route.params
+  console.log("destination data:", mode)
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [selectedTime, setSelectedTime] = useState(new Date());
@@ -509,6 +527,8 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
     setSelectedTime(time);
     hideTimePicker();
   };
+  
+  const destName = typeof destination === 'string' ? destination : destination?.name || 'Unknown';
 
   const handleShareLink = async () => {
     try {
@@ -545,6 +565,7 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
       time: selectedTime,
       travelMode: travelMode, // This ensures the selected travel mode is passed correctly
       isPublic,
+      mode: route.params.mode,
     });
   };
 
@@ -575,10 +596,23 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
     return names[mode] || mode.charAt(0).toUpperCase() + mode.slice(1);
   };
 
+    const getDestinationImage = (name) => {
+      if (typeof destination === 'object' && destination.image && typeof destination.image !== 'string') {
+        return destination.image;
+      }
+      return destinationImages[name] || defaultImage;
+    };
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <StatusBar barStyle="dark-content" />
-
+      <View className="w-full p-2  h-48 relative">
+        <Image 
+            source={getDestinationImage(destName)}
+            className="w-full h-full rounded-xl"
+            resizeMode="cover"
+          />
+        </View>
       {/* Header */}
       {/* <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-200">
         <TouchableOpacity onPress={() => navigation?.goBack()}>
@@ -596,8 +630,8 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
             {destination?.name || 'Unknown'}
           </Text>
         </View>
-
-        {/* Date Picker */}
+        {mode === 'Schedule Your Tour' && (
+      <>
         <Text className="text-lg font-bold text-gray-800 mb-3">
           When would you like to travel?
         </Text>
@@ -620,8 +654,7 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
           onCancel={hideDatePicker}
           minimumDate={new Date()}
         />
-
-        {/* Time Picker */}
+                {/* Time Picker */}
         <TouchableOpacity
           className="flex-row justify-between items-center bg-gray-50 p-4 rounded-lg mb-6"
           onPress={showTimePicker}
@@ -632,6 +665,9 @@ const DateModeSelectionScreen = ({ route, navigation }) => {
           </View>
           <Text className="text-gray-800 font-medium">{formatTime(selectedTime)}</Text>
         </TouchableOpacity>
+      </>
+        )}
+
 
         <DateTimePickerModal
           isVisible={isTimePickerVisible}
